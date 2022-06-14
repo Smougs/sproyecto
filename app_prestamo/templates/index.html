@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <title>Prestamos</title>
+</head>
+<body>
+    <h1>Buen día.</h1>
+
+    <form action="{% url 'create_task' %}" method="POST">
+        {% csrf_token %}
+    <input type="text" name="nombre" placeholder="escribi tu nombre">
+    <input type="text" name="apellido" placeholder="escribi tu apellido">
+    <input type="text" name="telefono" placeholder="escribi tu telefono">
+    <input type="text" name="direccion" placeholder="escribi tu direccion">
+    <input type="text" name="libro" placeholder="escribi el libro que pediste prestado">
+    <input type="text" name="estado" placeholder="">
+
+    <button>guardar</button>
+    </form>
+
+    {% for Prestamo in prestamos %}
+    <div>
+         <h4>{{Prestamo.nombre}}</h4>
+         <h4>{{Prestamo.apellido}}</h4>
+         <p>{{Prestamo.direccion}}</p>
+         <p>{{Prestamo.telefono}}</p>
+         <p>{{Prestamo.libro}}</p>
+         <button>Borrar</button>
+         
+
+         </form>
+    </div>
+    {% empty %}
+    <h1>No hay usuarios registrados</h1>
+{% endfor %}
+
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
